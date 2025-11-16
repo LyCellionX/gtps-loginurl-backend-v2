@@ -1,115 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GTPSID Login</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GTPSID Login</title>
+<link rel="icon" href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico" />
+<link href="https://fonts.cdnfonts.com/css/upheaval" rel="stylesheet">
 
-  <link rel="icon" href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico" />
+<style>
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-  <!-- Pixel/GT-Styled Font -->
-  <link href="https://fonts.cdnfonts.com/css/upheaval" rel="stylesheet">
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f5faff;
+    font-family: 'Upheaval', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: url('https://cdn.growtopiagame.com/website/resources/assets/images/bg-clouds.png') repeat #69c7ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Upheaval', sans-serif !important;
-    }
+  .login-container {
+    width: 90%;
+    max-width: 420px;
+    padding: 25px;
+    background: rgba(255,255,255,0.98);
+    border-radius: 12px;
+    border: 4px solid #3c7bd6;
+    box-shadow: 0px 0px 0px 4px #6aa8ff inset, 0 0 25px rgba(0,0,0,0.15);
+    animation: pop 0.35s ease;
+  }
 
-    .login-container {
-      width: 420px;
-      padding: 25px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 12px;
-      border: 4px solid #3c7bd6;
-      box-shadow: 0px 0px 0px 4px #6aa8ff inset, 0 0 25px rgba(0,0,0,0.2);
-      animation: pop 0.4s ease;
-    }
+  @keyframes pop {
+    from { transform: scale(0.88); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
 
-    @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+  h3 {
+    font-size: 24px;
+    color: #2d5ca8;
+    text-shadow: 2px 2px #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    h3 {
-      font-size: 26px;
-      color: #2d5ca8;
-      text-shadow: 2px 2px #ffffff;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  .input-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .gt-input {
-      width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 14px;
-      border: 3px solid #3b7ecc;
-      border-radius: 6px;
-      font-family: 'Upheaval', sans-serif;
-      background: #ffffff;
-      box-shadow: 0px 0px 0px 4px #87bfff inset;
-      font-size: 16px;
-    }
+  .gt-input {
+    width: 100%;
+    padding: 12px;
+    border: 3px solid #3b7ecc;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0px 0px 0px 4px #87bfff inset;
+    font-size: 16px;
+    font-family: 'Upheaval', sans-serif;
+  }
 
-    .gt-input:focus {
-      outline: none;
-      background: #e2f1ff;
-    }
+  .gt-input:focus {
+    background: #e2f1ff;
+    outline: none;
+  }
 
-    .gt-btn {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 8px;
-      font-size: 20px;
-      cursor: pointer;
-      color: white;
-      font-family: 'Upheaval', sans-serif;
-      transition: 0.15s ease;
-      text-shadow: 2px 2px #000;
-    }
+  .gt-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    font-family: 'Upheaval', sans-serif;
+    transition: 0.15s ease;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px #000;
+  }
 
-    .gt-btn-login {
-      background: linear-gradient(#2f66dd, #1c49a3);
-      border: 3px solid #1c49a3;
-    }
+  .gt-btn-login {
+    background: linear-gradient(#2f66dd, #1c49a3);
+    border: 3px solid #1c49a3;
+  }
 
-    .gt-btn-login:hover {
-      background: linear-gradient(#3f7aff, #1f50bc);
-      transform: translateY(-2px);
-    }
+  .gt-btn-login:hover {
+    background: linear-gradient(#3f7aff, #1f50bc);
+    transform: translateY(-2px);
+  }
 
-    .gt-btn-reg {
-      background: linear-gradient(#ffb22c, #e28800);
-      border: 3px solid #a66300;
-    }
+  .gt-btn-reg {
+    background: linear-gradient(#ffb22c, #e28800);
+    border: 3px solid #a66300;
+  }
 
-    .gt-btn-reg:hover {
-      background: linear-gradient(#ffcc66, #db8f00);
-      transform: translateY(-2px);
-    }
-  </style>
+  .gt-btn-reg:hover {
+    background: linear-gradient(#ffcc66, #db8f00);
+    transform: translateY(-2px);
+  }
+</style>
 </head>
 
 <body>
 <div class="login-container">
-  
+
   <h3>Log Into Your GTPSID</h3>
 
   <form method="POST" action="/player/growid/login/validate" autocomplete="off">
 
-    <input type="text" name="_token" class="gt-input" placeholder="Server Name *" required>
+    <div class="input-group">
+      <input type="text" name="_token" class="gt-input" placeholder="Server Name *" required>
+    </div>
 
-    <input type="text" name="growId" id="loginGrowId" class="gt-input" placeholder="Your GrowID *">
+    <div class="input-group">
+      <input type="text" name="growId" id="loginGrowId" class="gt-input" placeholder="Your GrowID *">
+    </div>
 
-    <input type="password" name="password" id="loginPassword" class="gt-input" placeholder="Your Password *">
+    <div class="input-group">
+      <input type="password" name="password" id="loginPassword" class="gt-input" placeholder="Your Password *">
+    </div>
 
     <button type="submit" name="action" value="Login" class="gt-btn gt-btn-login">LOGIN</button>
     <button type="submit" name="action" value="Register" class="gt-btn gt-btn-reg">REGISTER</button>
@@ -119,9 +133,9 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const stored = localStorage.getItem("growId");
-      if (stored) document.getElementById("loginGrowId").value = stored;
+  document.addEventListener("DOMContentLoaded", () => {
+    const stored = localStorage.getItem("growId");
+    if (stored) document.getElementById("loginGrowId").value = stored;
   });
 </script>
 </body>
